@@ -1,4 +1,4 @@
-package com.debuggeando_ideas.fundamentals;
+package com.debuggeando_ideas.curso.fundamentos.generica;
 
 import java.util.List;
 import java.util.UUID;
