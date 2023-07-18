@@ -11,7 +11,6 @@ import java.util.stream.Stream;
 public class CollectorsToCollection {
 
     public static void main(String[] args) {
-
         Stream<Videogame> videogames = Database.videogames.stream();
         //streamToCollection(videogames, "SET").forEach(System.out::println);
         streamToMap(videogames).forEach((k,v) -> System.out.println(k + " = " + v));
