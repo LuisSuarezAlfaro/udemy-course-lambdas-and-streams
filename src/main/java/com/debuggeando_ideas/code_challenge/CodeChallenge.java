@@ -1,5 +1,7 @@
 package com.debuggeando_ideas.code_challenge;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -16,23 +18,40 @@ class CodeImpl {
 
     //Es impar? impar return true - par return false
     public static PerformOperation isOdd() {
-        return null;
+        return n -> !(n % 2 == 0);
     }
 
     //Es un numero primo?
     public static PerformOperation isPrime() {
-        return null;
+        return n -> {
+            int divider = 1;
+            int cont = 0;
+            while(divider <= n){
+                if(n % divider == 0){cont++;};
+                if(cont > 2){break;};
+                divider++;
+            }
+            return cont == 2;
+        };
     }
 
     //Es un numero palindromo? 98589
     public static PerformOperation isPalindrome() {
-        return null;
+        return n -> {
+            String numeroString = Integer.toString(n);
+            char[] chars = numeroString.toCharArray();
+            int charsLength = chars.length;
+
+            for (int i = 0,r = charsLength-1; i < charsLength; i++, r--){
+                if(chars[i] != chars[r]){return false;};
+            }
+            return true;
+        };
     }
 }
 
 /*public class CodeChallenge {
 
-}
     @Test
     public void startTest() {
 
@@ -44,7 +63,6 @@ class CodeImpl {
         int[] isPrimeCases = {2,31,97,42,98};
         int[] isPalindromeCases = {54322345,710101017,888,7848729,783483002};
 
-    
         assertAll( "Test isOdd" ,
                 () -> assertTrue(isOdd.check(isOddCases[0])),
                 () -> assertTrue(isOdd.check(isOddCases[1])),
@@ -90,5 +108,6 @@ public class CodeChallenge {
         Arrays.stream(isPalindromeCases).forEach(i -> System.out.println(isPalindrome.check(i))); //true, true, true, false, false
     }
 }
+
 
 
